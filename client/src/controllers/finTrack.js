@@ -3,9 +3,9 @@ const db = require("../models");
 
 router.get("/home", (req, res) => {
     db.Statement.find()
-    .then(statements => {
-        console.log(statements)
-        res.json(statements)
+    .then(foundStatements => {
+        console.log(foundStatements)
+        res.render(statements)
     })
     .catch(err => {
         console.log(err)

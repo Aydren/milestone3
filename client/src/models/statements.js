@@ -12,5 +12,4 @@ const statementSchema = new Schema({
 });
 
 // creating model Statement
-const Statement = mongoose.model("Statement", statementSchema);
-module.exports = Statement;
+module.exports = mongoose.model("Statement", statementSchema, 'statement');
