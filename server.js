@@ -8,10 +8,15 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 
+// Controller
+const finTrackerController = require("./client/src/controllers/finTrack");
+
+app.use("/library", finTrackerController);
+
 // call to my server
 app.get("/api", (req, res) => {
   res.json({
-    message: "Yellow world from server.js"
+    message: "Yellow world from server.js",
   });
 });
 

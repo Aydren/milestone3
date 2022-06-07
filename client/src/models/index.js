@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -10,5 +9,5 @@ mongoose.connect(
   }
 );
 
-module.exports.Users = require("./users");
+module.exports.User = require("./users.js");
 module.exports.Statement = require("./statement");
