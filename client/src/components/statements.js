@@ -1,7 +1,7 @@
 import StatementList from "./listStatement";
 import NavBar from "./navBar";
 
-function Home() {
+function Statement() {
   return (
     <div className="App">
       <NavBar />
@@ -10,4 +10,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Statement;

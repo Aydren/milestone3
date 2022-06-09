@@ -16,24 +16,28 @@ router.get("/statement", (req, res) => {
 
 // creating new statement
 router.post("/statement", (req, res) => {
-  console.log(req.body);
   db.Statement.create(req.body);
   res.status(200).json({ message: "upload sent" });
 });
 
 // getting a specific statement according to its id
 router.get("/statement/:id", (req, res) => {
-  db.Statement.findById(req.params.id)
-    .then(statementId => {
-      res.status(200).json(statementId);
-    });
+  db.Statement.findById(req.params.id).then(statementId => {
+    res.status(200).json(statementId);
+  });
 });
 
 // editing a specific statement according to its id
 router.post("/statement/:id/edit", (req, res) => {
-  console.log(req.body);
-  db.Statement.create(req.body);
-  res.status(200).json({ message: "upload sent" });
+  db.Statement.updateOne(req.params.id)
+    .then(statementId => {
+      console.log(place.comments);
+      res.status(200).render("places/show", { statementId });
+    })
+    .catch(err => {
+      console.log("err", err);
+      res.render("error404");
+    });
 });
 
 // gather users from db

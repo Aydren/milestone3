@@ -16,7 +16,7 @@ function NavBar() {
               <Nav.Link href="/post">Post</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/edit">Edit</Nav.Link>
+              <Nav.Link href="/statements">Statements</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar>
