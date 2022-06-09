@@ -1,16 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "./navBar";
 
 function Post() {
   const [inputs, setInputs] = useState({});
-  
-  useEffect(() => {
-    fetch('/library',{
-      method:'post'
-    })
-  })
 
   const handleChange = event => {
     const name = event.target.name;
@@ -18,9 +12,18 @@ function Post() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(inputs)
+  const handleSubmit = async event => {
+    await fetch(
+      "http://localhost:3000/finTrack/statement",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      },
+      alert("New statement has been posted!")
+    );
   };
 
   return (

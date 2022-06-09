@@ -22,7 +22,7 @@ function Home() {
         <p>start</p>
         <div key={statement.id} className="cardBody">
             <li className="statementUser">{statement.username.username}</li>
-            <li className="statementCategory">{statement.category}</li>
+            <li className="statementExpenses">{statement.expenses}</li>
             <li className="statementLocation">{statement.location}</li>
             <li className="statementSpent">${statement.spent}</li>
             <li className="statementDate">{statement.date}</li>
