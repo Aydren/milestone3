@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "./navBar";
 
 function Post() {
   const [inputs, setInputs] = useState({});
+  
+  useEffect(() => {
+    fetch('/library',{
+      method:'post'
+    })
+  })
 
   const handleChange = event => {
     const name = event.target.name;
@@ -14,7 +20,7 @@ function Post() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(inputs);
+    console.log(inputs)
   };
 
   return (
@@ -23,7 +29,12 @@ function Post() {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formExpenses">
           <Form.Label>Expenses</Form.Label>
-          <Form.Select name="expenses" value={inputs.expenses} onChange={handleChange}>
+          <Form.Select
+            name="expenses"
+            value={inputs.expenses}
+            onChange={handleChange}
+          >
+            <option>Select Expense</option>
             <option>Entertainment</option>
             <option>Food</option>
             <option>Housing</option>
@@ -42,6 +53,7 @@ function Post() {
           <Form.Control
             type="text"
             placeholder="Where did you spend"
+            name="location"
             value={inputs.location}
             onChange={handleChange}
           />
@@ -52,6 +64,7 @@ function Post() {
           <Form.Control
             type="Number"
             placeholder="How much did you spend"
+            name="spent"
             value={inputs.spent}
             min="1"
             onChange={handleChange}
@@ -62,6 +75,7 @@ function Post() {
           <Form.Label>Date</Form.Label>
           <Form.Control
             type="Date"
+            name="date"
             value={inputs.date}
             onChange={handleChange}
           />
