@@ -18,8 +18,9 @@ App {
 
 .form-holder {
   text-align: center;
-  margin: 0 10rem;
+  margin: auto;
   padding: 5rem;
+  max-width: 500px;
   background-color: var(--secondary-bg-color);
   border-radius: 10px;
 }

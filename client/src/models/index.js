@@ -9,5 +9,5 @@ mongoose.connect(
   }
 );
 
-module.exports.User = require("./users.js");
+module.exports.Users = require("./users.js");
 module.exports.Statement = require("./statement");

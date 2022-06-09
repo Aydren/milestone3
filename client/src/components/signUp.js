@@ -22,6 +22,14 @@ function SignUp() {
               />
             </Form.Group>
 
+            <Form.Group className="mb-3" controlId="formPasswordAuth">
+              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Confirm Password"
+              />
+            </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Text className="text-muted">
                 We'll never share your Username and Password with anyone else.

@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+// requiring Controller
+const finTrackerController = require("./client/src/controllers/finTrack");
 
 const PORT = process.env.PORT || 3001;
 
@@ -8,10 +10,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 
-// Controller
-const finTrackerController = require("./client/src/controllers/finTrack");
-
-app.use("/library", finTrackerController);
+app.use("/finTrack", finTrackerController);
 
 // call to my server
 app.get("/api", (req, res) => {
