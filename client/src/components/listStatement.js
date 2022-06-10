@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 function StatementList() {
-  
   const [statmentData, setStatementData] = useState([]);
 
   useEffect(() => {
@@ -21,7 +20,9 @@ function StatementList() {
       <div className="statementLog" key={statement.id}>
         <p>start</p>
         <div key={statement.id} className="cardBody">
-          <li className="statementId"><a href="/statements/edit/:id">{statement.id}</a></li>
+          <li className="statementId">
+            <a href="/statements/edit/:id">{statement.id}</a>
+          </li>
           <li className="statementUser">{statement.username.username}</li>
           <li className="statementExpenses">{statement.expenses}</li>
           <li className="statementLocation">{statement.location}</li>

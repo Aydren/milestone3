@@ -17,7 +17,13 @@ router.get("/statement", (req, res) => {
 // creating new statement
 router.post("/statement", (req, res) => {
   db.Statement.create(req.body);
-  res.status(200).json({ message: "upload sent" });
+  res.status(200).json({ message: "upload sent new statement" });
+});
+
+// creating new user
+router.post("/new-user", (req, res) => {
+  db.Users.create(req.body);
+  res.status(200).json({ message: "upload sent new user" });
 });
 
 // getting a specific statement according to its id
@@ -28,11 +34,11 @@ router.get("/statement/:id", (req, res) => {
 });
 
 // editing a specific statement according to its id
-router.post("/statement/:id/edit", (req, res) => {
+router.put("/statement/:id/edit", (req, res) => {
   db.Statement.updateOne(req.params.id)
     .then(statementId => {
-      console.log(place.comments);
-      res.status(200).render("places/show", { statementId });
+      console.log(db.Statement.id);
+      res.status(200).json(statementId);
     })
     .catch(err => {
       console.log("err", err);

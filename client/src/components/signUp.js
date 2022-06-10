@@ -1,17 +1,45 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 function SignUp() {
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = async e => {
+    console.log(inputs);
+    await fetch(
+      "http://localhost:3000/finTrack/new-user",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      },
+      alert("New user has been posted!")
+    );
+  };
+
   return (
     <div className="App">
       <div>
-        <h1>hello world</h1>
-        <h2>this is signUp.js</h2>
-        <div className="form-holder">
-          <Form>
-            <Form.Group className="mb-3" controlId="formCreateUsername" >
+        <div className="mt-5 form-holder">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formCreateUsername">
               <Form.Label>Create Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter a unique Username"/>
+              <Form.Control
+                type="text"
+                placeholder="Enter a unique Username"
+                name="username"
+                value={inputs.username}
+                onChange={handleChange}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formCreatePassword">
@@ -19,16 +47,16 @@ function SignUp() {
               <Form.Control
                 type="password"
                 placeholder="Enter a unique Password"
+                name="password"
+                value={inputs.password}
+                onChange={handleChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formPasswordAuth">
+            {/* <Form.Group className="mb-3" controlId="formPasswordAuth">
               <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Confirm Password"
-              />
-            </Form.Group>
+              <Form.Control type="password" placeholder="Confirm Password" />
+            </Form.Group> */}
 
             <Form.Group className="mb-3">
               <Form.Text className="text-muted">

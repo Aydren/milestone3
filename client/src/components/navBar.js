@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <div className="App">
       <Container>
-        <Navbar >
+        <Navbar>
           <Navbar.Brand href="/home">Prime Financial Tracker</Navbar.Brand>
           <Nav>
             <Nav.Item>
@@ -17,6 +17,11 @@ function NavBar() {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="/statements">Statements</Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <Nav>
+            <Nav.Item>
+              <Nav.Link href="#">Logout </Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar>

@@ -12,7 +12,9 @@ function Post() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async e => {
+    console.log(inputs);
+    e.preventDefault();
     await fetch(
       "http://localhost:3000/finTrack/statement",
       {

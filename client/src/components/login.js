@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function Login() {
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    fetch("/finTrack/user")
+      .then(res => res.json())
+      .then(usersData => {
+        setUsersData(usersData);
+        console.log(usersData);
+      })
+      .catch(err => {
+        console.log("warn error", err);
+      });
+  }, []);
   return (
     <div className="App">
       <h1>hello world</h1>
