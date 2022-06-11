@@ -37,7 +37,7 @@ function SignUp() {
                 type="text"
                 placeholder="Enter a unique Username"
                 name="username"
-                value={inputs.username}
+                value={inputs.username || []}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -48,7 +48,7 @@ function SignUp() {
                 type="password"
                 placeholder="Enter a unique Password"
                 name="password"
-                value={inputs.password}
+                value={inputs.password || []}
                 onChange={handleChange}
               />
             </Form.Group>

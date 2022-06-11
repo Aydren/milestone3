@@ -36,7 +36,7 @@ function Post() {
           <Form.Label>Expenses</Form.Label>
           <Form.Select
             name="expenses"
-            value={inputs.expenses}
+            value={inputs.expenses || []}
             onChange={handleChange}
           >
             <option>Select Expense</option>
@@ -59,7 +59,7 @@ function Post() {
             type="text"
             placeholder="Where did you spend"
             name="location"
-            value={inputs.location}
+            value={inputs.location || []}
             onChange={handleChange}
           />
         </Form.Group>
@@ -70,7 +70,7 @@ function Post() {
             type="Number"
             placeholder="How much did you spend"
             name="spent"
-            value={inputs.spent}
+            value={inputs.spent || []}
             min="1"
             onChange={handleChange}
           />
@@ -81,7 +81,7 @@ function Post() {
           <Form.Control
             type="Date"
             name="date"
-            value={inputs.date}
+            value={inputs.date || []}
             onChange={handleChange}
           />
         </Form.Group>
