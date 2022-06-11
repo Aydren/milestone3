@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function Login() {
   const [inputs, setInputs] = useState([]);
-  const [usersData, setUsersData] = useState([]);
 
   const handleChange = event => {
     const name = event.target.name;
@@ -12,28 +11,20 @@ function Login() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-  useEffect(() => {
-    fetch("/finTrack/user")
-      .then(res => res.json())
-      .then(usersData => {
-        setUsersData(usersData);
-        console.log(usersData);
-      })
-      .catch(err => {
-        console.log("warn error", err);
-      });
-  }, []);
-
-  const ifTrue = (inputs, usersData) =>
-    inputs === usersData.password & usersData.usernamem
-      ? console.log(true, inputs, usersData)
-      : console.log(false, inputs, usersData);
-
   const handleSubmit = async e => {
     e.preventDefault();
-    ifTrue(inputs, usersData);
     console.log(inputs);
-    alert("Login request was sent!");
+    await fetch(
+      "http://localhost:3000/finTrack/user",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      },
+      alert("login attempt success!")
+    );
   };
 
   return (

@@ -59,4 +59,18 @@ router.get("/user", (req, res) => {
     });
 });
 
+// checking if users matches from db
+router.post("/user", (req, res) => {
+  db.Users.findOne({
+    username: req.body.username,
+  }).then(user => {
+    if (!user || req.body.password !== user.password) {
+      res.status(404).json({ message: "user not found" });
+    } else {
+      console.log(user);
+      res.json(user);
+    }
+  });
+});
+
 module.exports = router;
