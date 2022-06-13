@@ -14,7 +14,7 @@ function Post() {
 
   const handleSubmit = async () => {
     /* console.log(inputs); */
-    await fetch("http://localhost:3000/finTrack/statement", {
+    await fetch("/finTrack/statement", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ function SignUp() {
     e.preventDefault();
     /* console.log(inputs); */
     let response = await fetch(
-      "http://localhost:3000/finTrack/users/new-user",
+      "/finTrack/users/new-user",
       {
         method: "POST",
         headers: {

@@ -16,7 +16,7 @@ function Edit() {
   const handleSubmit = async e => {
     e.preventDefault();
     /* console.log(inputs); */
-    await fetch("http://localhost:3000/finTrack/statement/edit", {
+    await fetch("/finTrack/statement/edit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

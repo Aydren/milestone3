@@ -20,7 +20,7 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     /* console.log(inputs); */
-    let response = await fetch("http://localhost:3000/finTrack/users/sign-in", {
+    let response = await fetch("/finTrack/users/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
