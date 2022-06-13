@@ -14,7 +14,7 @@ function SignUp() {
   const handleSubmit = async e => {
     console.log(inputs);
     await fetch(
-      "http://localhost:3000/finTrack/new-user",
+      "http://localhost:3000/finTrack/users/new-user",
       {
         method: "POST",
         headers: {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "./navBar";
@@ -14,24 +14,29 @@ function Post() {
 
   const handleSubmit = async e => {
     console.log(inputs);
-    e.preventDefault();
-    await fetch(
-      "http://localhost:3000/finTrack/statement",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputs),
+    await fetch("http://localhost:3000/finTrack/statement", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      alert("New statement has been posted!")
-    );
+      body: JSON.stringify(inputs),
+    });
   };
 
   return (
     <div className="App">
       <NavBar />
       <Form onSubmit={handleSubmit}>
+        {/* <Form.Group className="mb-3" controlId="formLocation">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            value={}
+            onSubmit={handleChange}
+          />
+        </Form.Group> */}
+
         <Form.Group className="mb-3" controlId="formExpenses">
           <Form.Label>Expenses</Form.Label>
           <Form.Select

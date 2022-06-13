@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { UserContext } from "./UserContext";
 
 function Login() {
   const [inputs, setInputs] = useState([]);
+  const [errMessage, setErrMessage] = useState(null);
+  const [user, setUser] = useState(UserContext)
+
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const name = event.target.name;
@@ -14,17 +20,19 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     console.log(inputs);
-    await fetch(
-      "http://localhost:3000/finTrack/user",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputs),
+    let response = await fetch("http://localhost:3000/finTrack/users/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      alert("login attempt success!")
-    );
+      body: JSON.stringify(inputs),
+    });
+    if (response.status === 200) {
+      console.log(user)
+      navigate("/home");
+    } else {
+      setErrMessage("Username/password incorrect");
+    }
   };
 
   return (
@@ -57,6 +65,11 @@ function Login() {
               We'll never share your Username or Password with anyone else.
             </Form.Text>
           </Form.Group>
+          {errMessage !== null ? (
+            <div className="alert alert-danger" role="alert">
+              {errMessage}
+            </div>
+          ) : null}
           <Button variant="primary" type="submit">
             Login
           </Button>{" "}
