@@ -6,8 +6,8 @@ import { UserContext } from "./UserContext";
 
 function Login() {
   const [inputs, setInputs] = useState([]);
-  const [errMessage, setErrMessage] = useState(null);
-  const [user, setUser] = useState(UserContext)
+  const [error, setError] = useState(null);
+  const { user, setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function Login() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(inputs);
+    /* console.log(inputs); */
     let response = await fetch("http://localhost:3000/finTrack/users/sign-in", {
       method: "POST",
       headers: {
@@ -28,10 +28,10 @@ function Login() {
       body: JSON.stringify(inputs),
     });
     if (response.status === 200) {
-      console.log(user)
-      navigate("/home");
+      setUser(inputs.username)
+      navigate("/statements");
     } else {
-      setErrMessage("Username/password incorrect");
+      setError("Username/password incorrect");
     }
   };
 
@@ -39,6 +39,7 @@ function Login() {
     <div className="App">
       <div className="form-holder mt-5">
         <Form onSubmit={handleSubmit}>
+          {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
           <h1>Login</h1>
           <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
@@ -65,15 +66,19 @@ function Login() {
               We'll never share your Username or Password with anyone else.
             </Form.Text>
           </Form.Group>
-          {errMessage !== null ? (
+          {error !== null ? (
             <div className="alert alert-danger" role="alert">
-              {errMessage}
+              {setError}
             </div>
           ) : null}
           <Button variant="primary" type="submit">
             Login
           </Button>{" "}
-          <Button variant="secondary" href="/signup">
+          <Button
+            variant="secondary"
+            href="/signup"
+            onClick={() => setUser(inputs.username)}
+          >
             Sign Up!
           </Button>{" "}
         </Form>

@@ -12,8 +12,8 @@ function Post() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async e => {
-    console.log(inputs);
+  const handleSubmit = async () => {
+    /* console.log(inputs); */
     await fetch("http://localhost:3000/finTrack/statement", {
       method: "POST",
       headers: {
@@ -26,7 +26,7 @@ function Post() {
   return (
     <div className="App">
       <NavBar />
-      <Form onSubmit={handleSubmit}>
+      <Form className="forms mx-5 my-2 p-4 text-center rounded" onSubmit={handleSubmit}>
         {/* <Form.Group className="mb-3" controlId="formLocation">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -41,7 +41,7 @@ function Post() {
           <Form.Label>Expenses</Form.Label>
           <Form.Select
             name="expenses"
-            value={inputs.expenses || []}
+            value={inputs.expenses}
             onChange={handleChange}
           >
             <option>Select Expense</option>
@@ -91,7 +91,7 @@ function Post() {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button className="w-100" variant="primary" type="submit">
           Submit
         </Button>
       </Form>

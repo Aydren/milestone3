@@ -41,17 +41,21 @@ router.get("/statement/:id", (req, res) => {
   });
 });
 
-// editing a specific statement according to its id
-router.put("/statement/:id/edit", (req, res) => {
-  db.Statement.updateOne(req.params.id)
-    .then(statementId => {
-      console.log(db.Statement.id);
-      res.redirect(`/statement/${req.params.id}/edit`);
-      res.status(200).json(statementId);
-    })
-    .catch(err => {
-      console.log("err", err);
+// editing a specific statement according to its id not currently working since when page is redirected req is empty so we are updating nothing 
+router.put("/statement/edit", async (req, res) => {
+  try {
+    await db.Statement.findById(req.params.id, (err, updateStatement) => {
+      console.log(req.params.id, req.body.expenses)
+      /* updateStatement.expenses = req.body.expenses;
+      updateStatement.location = req.body.location;
+      updateStatement.spent = req.body.spent;
+      updateStatement.date = req.body.date;
+      updateStatement.save() */
     });
+  } catch (err) {
+    console.log("err", err);
+  }
+  res.status(200).send('updated statement')
 });
 
 // gather users from db
@@ -96,7 +100,7 @@ router.post("/users/sign-in", (req, res) => {
       console.log(user);
       res.json(user);
     } else {
-      console.log(err)
+      console.log(err);
     }
   });
 });

@@ -8,7 +8,7 @@ function FirstFiveState() {
       .then(res => res.json())
       .then(statementData => {
         setStatementData(statementData);
-        console.log(statementData);
+        /* console.log(statementData); */
       })
       .catch(err => {
         console.log("warn error", err);
@@ -17,7 +17,7 @@ function FirstFiveState() {
 
   let statementFormatted = statementData.map(statement => {
     return (
-      <div className="statementLog" key={statement.id}>
+      <div className="statementLog rounded-2 m-2 px-2" key={statement.id}>
         <div key={statement.id} className="cardBody">
           <li className="statementExpenses">{statement.expenses}</li>
           <li className="statementLocation">{statement.location}</li>

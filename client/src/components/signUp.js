@@ -12,7 +12,7 @@ function SignUp() {
   };
 
   const handleSubmit = async e => {
-    console.log(inputs);
+    /* console.log(inputs); */
     await fetch(
       "http://localhost:3000/finTrack/users/new-user",
       {

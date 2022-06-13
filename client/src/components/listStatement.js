@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
 
 function StatementList() {
   const [statmentData, setStatementData] = useState([]);
@@ -8,35 +9,40 @@ function StatementList() {
       .then(res => res.json())
       .then(statmentData => {
         setStatementData(statmentData);
-        console.log(statmentData);
+        /* console.log(statmentData); */
       })
       .catch(err => {
-        console.log("warn error", err);
+        console.log("warn error ❌", err);
       });
   }, []);
 
   let statementFormatted = statmentData.map(statement => {
     return (
-      <div className="statementLog" key={statement.id}>
-        <p>start</p>
-        <div key={statement.id} className="cardBody">
-          <li className="statementId">
-            <a href="/statements/edit/:id">{statement.id}</a>
-          </li>
-          <li className="statementUser">{statement.username.username}</li>
-          <li className="statementExpenses">{statement.expenses}</li>
-          <li className="statementLocation">{statement.location}</li>
-          <li className="statementSpent">${statement.spent}</li>
-          <li className="statementDate">{statement.date}</li>
-        </div>
-        <p>end</p>
+      <div key={statement.id}>
+        <Table striped hover>
+          <tbody>
+            <tr key={statement.id}>
+              <td>
+                <a onClick={()=>{
+
+                }} href={`/statements/edit/${statement.id}`}> Edit Statement</a>
+              </td>
+              <td>{statement.expenses}</td>
+              <td>{statement.location}</td>
+              <td>${statement.spent}</td>
+              <td>{statement.date}</td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   });
 
   return (
     <div className="App">
-      <div key={StatementList}>{statementFormatted}</div>
+      <div className="mx-5">
+        <div key={StatementList}>{statementFormatted}</div>
+      </div>
     </div>
   );
 }
