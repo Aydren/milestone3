@@ -29,9 +29,9 @@ function Edit() {
   return (
     <div className="App">
       <NavBar />
-      <h1>Edit statement</h1>
       <div className="forms mx-5 my-2 p-4 text-center rounded">
         <Form onSubmit={handleSubmit}>
+      <h1>Edit statement</h1>
           {/* <Form.Group className="mb-3" controlId="formLocation">
           <Form.Label>Username</Form.Label>
           <Form.Control

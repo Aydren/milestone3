@@ -26,8 +26,8 @@ function Post() {
   return (
     <div className="App">
       <NavBar />
-      <h1>Post new statement</h1>
       <Form className="forms mx-5 my-2 p-4 text-center rounded" onSubmit={handleSubmit}>
+      <h1>Post new statement</h1>
         {/* <Form.Group className="mb-3" controlId="formLocation">
           <Form.Label>Username</Form.Label>
           <Form.Control
