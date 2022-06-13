@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+
 // requiring Controller
 const finTrackerController = require("./client/src/controllers/finTrack");
 
@@ -9,11 +11,7 @@ const PORT = process.env.PORT || 3001;
 // middleware
 const app = express();
 app.use(cors());
-const path = require("path");
-app.use(express.json())
-
-// Have Node serve the files for our built React app for deploy
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.json());
 
 app.use("/finTrack", finTrackerController);
 
@@ -24,6 +22,8 @@ app.get("/api", (req, res) => {
   });
 });
 
+// Have Node serve the files for our built React app for deploy
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 //config for deploy
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

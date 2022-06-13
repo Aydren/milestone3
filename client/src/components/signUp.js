@@ -15,6 +15,7 @@ function SignUp() {
   };
 
   const handleSubmit = async e => {
+    e.preventDefault();
     /* console.log(inputs); */
     let response = await fetch(
       "http://localhost:3000/finTrack/users/new-user",
@@ -48,7 +49,6 @@ function SignUp() {
                 onChange={handleChange}
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formCreatePassword">
               <Form.Label>Create Password</Form.Label>
               <Form.Control
@@ -59,12 +59,10 @@ function SignUp() {
                 onChange={handleChange}
               />
             </Form.Group>
-
             {/* <Form.Group className="mb-3" controlId="formPasswordAuth">
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" placeholder="Confirm Password" />
             </Form.Group> */}
-
             <Form.Group className="mb-3">
               <Form.Text className="text-muted">
                 We'll never share your Username and Password with anyone else.
@@ -75,9 +73,11 @@ function SignUp() {
                 {setError}
               </div>
             ) : null}
-
             <Button variant="primary" type="submit">
               Sign Up!
+            </Button>{" "}
+            <Button variant="secondary" type="submit">
+              Go to Login
             </Button>
           </Form>
         </div>
