@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001;
 // middleware
 const app = express();
 app.use(cors());
+const path = require("path");
 app.use(express.json())
 
 // Have Node serve the files for our built React app for deploy
