@@ -39,6 +39,7 @@ function SignUp() {
       <div>
         <div className="mt-5 form-holder">
           <Form onSubmit={handleSubmit}>
+            <h1>Create New User</h1>
             <Form.Group className="mb-3" controlId="formCreateUsername">
               <Form.Label>Create Username</Form.Label>
               <Form.Control
@@ -76,7 +77,7 @@ function SignUp() {
             <Button variant="primary" type="submit">
               Sign Up!
             </Button>{" "}
-            <Button variant="secondary" type="submit">
+            <Button variant="secondary" type="submit" href="/">
               Go to Login
             </Button>
           </Form>
