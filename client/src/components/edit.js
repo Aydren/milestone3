@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 
 function Edit() {
   const [inputs, setInputs] = useState({});
+  const [error, setError] = useState(null);
 
   const handleChange = event => {
     const name = event.target.name;
