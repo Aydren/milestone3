@@ -97,7 +97,7 @@ router.post("/users/sign-in", (req, res) => {
     if (user == null) {
       res.status(404).json({ message: "user not found" });
     } else if (await bcrypt.compare(req.body.password, user.password)) {
-      console.log(user);
+      /* console.log(user); */
       res.json(user);
     } else {
       console.log(err);
