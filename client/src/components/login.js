@@ -68,7 +68,7 @@ function Login() {
           </Form.Group>
           {error !== null ? (
             <div className="alert alert-danger" role="alert">
-              {setError}
+              {error}
             </div>
           ) : null}
           <Button variant="primary" type="submit">
