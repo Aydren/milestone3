@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className="App">
       <NavBar />
-      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+      <pre>{JSON.stringify(user, null, 2)}</pre>
       <FirstFiveState />
     </div>
   );

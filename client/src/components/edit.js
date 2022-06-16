@@ -16,7 +16,7 @@ function Edit() {
   const handleSubmit = async e => {
     e.preventDefault();
     /* console.log(inputs); */
-    await fetch("/finTrack/statement/edit", {
+    await fetch("/finTrack/statement/edit/:id", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -32,15 +32,16 @@ function Edit() {
       <div className="forms mx-5 my-2 p-4 text-center rounded">
         <Form onSubmit={handleSubmit}>
       <h1>Edit statement</h1>
-          {/* <Form.Group className="mb-3" controlId="formLocation">
+          <Form.Group className="mb-3" controlId="formLocation">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
             name="username"
-            value={}
+            value={'user'}
             onSubmit={handleChange}
+            disabled={true}
           />
-        </Form.Group> */}
+        </Form.Group>
 
           <Form.Group className="mb-3" controlId="formExpenses">
             <Form.Label>Expenses</Form.Label>

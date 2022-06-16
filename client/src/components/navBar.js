@@ -24,8 +24,24 @@ function NavBar() {
           </Nav>
           <Nav>
             <Nav.Item>
-              <Nav.Link href="/" onClick={()=>setUser(null)}>Logout </Nav.Link>
+              <Nav.Link href="/">
+                {user == null ? (
+                  <Nav.Link href="/">Login</Nav.Link>
+                ) : (
+                  <Nav.Item>
+                    <Nav.Link href="/" onClick={() => setUser(null)}>
+                      Logout
+                    </Nav.Link>
+                  </Nav.Item>
+                )}
+              </Nav.Link>
             </Nav.Item>
+            {user == null ? null : (
+              <Nav.Item>
+                <Nav.Link></Nav.Link>
+                Welcome, {user}
+              </Nav.Item>
+            )}
           </Nav>
         </Navbar>
       </Container>

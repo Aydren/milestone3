@@ -17,20 +17,19 @@ function StatementList() {
   }, []);
 
   let statementFormatted = statmentData.map(statement => {
+    let date = new Date(statement.date)
     return (
       <div key={statement.id}>
         <Table striped hover>
           <tbody>
             <tr key={statement.id}>
               <td>
-                <a onClick={()=>{
-
-                }} href={`/statements/edit/${statement.id}`}> Edit Statement</a>
+                <a href={`/statements/edit/${statement.id}`}>Edit Statement</a>
               </td>
               <td>{statement.expenses}</td>
               <td>{statement.location}</td>
               <td>${statement.spent}</td>
-              <td>{statement.date}</td>
+              <td>{date.toDateString()}</td>
             </tr>
           </tbody>
         </Table>

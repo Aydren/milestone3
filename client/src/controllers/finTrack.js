@@ -42,7 +42,7 @@ router.get("/statement/:id", (req, res) => {
 });
 
 // editing a specific statement according to its id not currently working since when page is redirected req is empty so we are updating nothing 
-router.put("/statement/edit", async (req, res) => {
+router.put("/statement/edit/:id", async (req, res) => {
   try {
     await db.Statement.findById(req.params.id, (err, updateStatement) => {
       console.log(req.params.id, req.body.expenses)
@@ -97,7 +97,7 @@ router.post("/users/sign-in", (req, res) => {
     if (user == null) {
       res.status(404).json({ message: "user not found" });
     } else if (await bcrypt.compare(req.body.password, user.password)) {
-      /* console.log(user); */
+      console.log(user);
       res.json(user);
     } else {
       console.log(err);

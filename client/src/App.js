@@ -16,8 +16,8 @@ function App() {
   /* useMemo takes in a object '({user, setUser})' and updates it every time '[user,setUser]' changes. This essentially prevents it from changes unless '[user,setUser]' is changed*/
   return (
     <div className="App">
-      <BrowserRouter>
-        <UserContext.Provider value={providerValue}>
+      <UserContext.Provider value={providerValue}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
@@ -26,8 +26,8 @@ function App() {
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/statements/edit/:id" element={<Edit />} />
           </Routes>
-        </UserContext.Provider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }
